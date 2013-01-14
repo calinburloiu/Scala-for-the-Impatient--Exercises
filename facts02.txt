@@ -1,0 +1,1 @@
+* An extended class argument will not be bound to a superclass field which has the same name.
