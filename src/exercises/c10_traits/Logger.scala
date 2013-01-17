@@ -12,10 +12,10 @@ trait CrytoLogger extends Logger {
   def encrypt(str: String) = str.map((c: Char) => (c + key).asInstanceOf[Char])
 }
 
-trait ConsoleLogger extends Logger {
+trait MyConsoleLogger extends Logger {
   def log(msg: String) { println(msg) }
 }
 
-object TraitsTest extends App with ConsoleLogger with CrytoLogger {
+object LoggerTest extends App with MyConsoleLogger with CrytoLogger {
   log("Ana are mere.")
 }
