@@ -1,0 +1,42 @@
+* Blocurile întorc valoarea ultimei expresii.
+* Funcțiile diferite de metode (ca în C++).
+* return reprezintă o ieșire forțată dintr-o funcție **cu nume**.
+** Nu trebuie folosit în alte situații.
+* Parametrii combinați, fără nume și cu nume, cei fără fiind primii.
+** Unii parametri pot avea valori default (ca în C++).
+* Procedurile nu au egal, ci doar acolade.
+* lazy val
+* def este evaluat la fiecare folosire, val doar la definire (definirea poate
+fi întârziată cu lazy).
+* Expresiile if întorc tipul cel mai general dintre cele două ramuri.
+** Dacă una din ramuri întoarce Nothing este ignorată.
+* Expresiile throw întorc Nothing.
+* Metodele fără parametri pot fi apelate fără (), dar cele care schimbă starea
+obiectului ar trebui să includă parantezele.
+* Implementarea de proprietăți în clase:
+** var foo: getter și setter
+** val foo: getter și valoare constantă
+** private var privateFoo: getter (def foo) și setter (def foo_=(..)) creat manual
+** private var privateFoo: getter (def foo) creat manual pentru proprietate read-only variabilă
+* type projection <Class>#<InnerClass>
+* <EnclosingClass>.this (ca în Java)
+* Redenumirea claselor la import
+* Apelarea super constructorului direct din declarația clasei.
+* Un def dintr-o clasă de bază poate fi override-at de un val în clasa moștenitoare.
+* Anonymous subclasses
+* Early definition (with)
+* Ierarhia de clase: Any, AnyVal, AnyRef, Nothing, Null, ScalaObject
+** Nothing nu are instanțe.
+* eq este pentru obiecte în Scala ce este == în Java.
+* trait-urile se înlănțuie (midex in) cu with, iar metodele suprascrise sunt apelate de la ultima din lanț la prima.
+** super nu apelează un părinte, decât dacă se folosește notația super[părinte]
+** super apelează trait-ul anterior lui din mixed in.
+* Trait-urile pot conține metode abstracte, care pot fi override-ate cu abstract override.
+* Initializing trait fields: early initialization după new la crearea unui obiectului.
+* Se poate mixa un trait care extinde o clasă, caz în care clasa respectivă devine superclasa clasei care extinde trait-ul.
+** Clasa care extinde trait-ul are posibilitatea să extindă și o altă clasă cu condiția ca aceasta să fie o subclasă a superclasei extinse de trait.
+* Self types pentru trait-uri:
+** Impun claselor care extind traitul să extindă o subclasă a self type-ului.
+** Trait-ul cu self type nu extinde efectiv clasa self type.
+* Self types în structural types
+* Escape hatch: `reserved_keyword`
