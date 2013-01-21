@@ -40,7 +40,7 @@ abstract class BankAccount(private var _balance: Double = 0.0) extends MyLogger 
   }
 }
 
-class BankApp extends App {
+object BankApp extends App {
   val b = new BankAccount with PrintLogger with UpperCaseLogger
   val c = new BankAccount with MyLogger {
     def log(msg: String) {

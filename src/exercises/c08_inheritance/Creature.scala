@@ -13,7 +13,7 @@ class Bug extends {
   override val range = 3
 } with Creature
 
-object CretureApp extends App {
+object CreatureApp extends App {
   val a = new Ant
   println(a.range)
   println(a.env.length)
