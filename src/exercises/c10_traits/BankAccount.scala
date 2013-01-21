@@ -1,4 +1,4 @@
-package test
+package exercises.c10_traits
 
 import scala.util.logging.Logged
 import scala.util.logging.ConsoleLogger
