@@ -1,7 +1,7 @@
 object Timer {
   
   def oncePerSecond(callback: (Int) => Unit) {
-    while (true {
+    while (true) {
       callback(3)
       Thread sleep 1000
     }

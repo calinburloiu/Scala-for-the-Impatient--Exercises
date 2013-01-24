@@ -19,6 +19,7 @@ obiectului ar trebui să includă parantezele.
 ** private var privateFoo: getter (def foo) și setter (def foo_=(..)) creat manual
 ** private var privateFoo: getter (def foo) creat manual pentru proprietate read-only variabilă
 * type projection <Class>#<InnerClass>
+* Pentru colecția coll, coll: _* se expandează în mai mulți parametri pentru apelul unei funcții cu număr de parametri variabili.
 * <EnclosingClass>.this (ca în Java)
 * Redenumirea claselor la import
 * Apelarea super constructorului direct din declarația clasei.
@@ -51,3 +52,14 @@ obiectului ar trebui să includă parantezele.
 * Stream-urile sunt leneșe și calculează valoarea doar când este apelat tail.
 ** Se poate folosi take cu force pe un stream pentru a forța un număr de valori.
 * Când mai multe prelucrări funcționale sunt necesare pe o colecție înaintea primei funcții de prelucrare se poate folosi view, iar sfârșit force.
+* În pattern matching dacă identificatorul de după case este scris cu litere mici atunci este interpretat ca variabilă nouă și face match la orice.
+** Pentru a evita asta se înconjoară identificatorul cu backtick-uri `.
+* În pattern matching când se face match pentru un tip trebuie precizat numele variabilei sau _, altfel se va face match pe obiect.
+* Nu se poate face match pentru un anume tip generic A[X, Y], dar A[_, _] merge, la fel și Array[Int] de exemplu.
+** pentru că nu există generice pentru JVM.
+* Se poate folosi expandarea _* pentru a face match la număr de parametri variabili.
+* Într-un for comprehension un match eșuat este ignorat.
+* La un case sau într-un for comprehension se poate folosi un guard if.
+* Clauze case cu notație infix
+* Funcțiile parțiale nu sunt definite pe tot domeniul și pot verifica dacă o intrare e definită.
+** collect din colecții privește o funcție parțială.
