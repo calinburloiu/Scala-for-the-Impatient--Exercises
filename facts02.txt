@@ -1,7 +1,11 @@
 * An extended class argument will not be bound to a superclass field which has the same name.
-
-
--------------------------------
+* Operatorii unari au prioritate mai mare decât cei infix.
+* Operatorii care se termină în : reprezintă metode ale celui de-al doilea argument și au asociativitate de dreapta.
+* Un apply boolean poate testa o condiție într-un case class.
+* implicit pentru converisia SAM (Single Abstract Methods) în funcții.
+* Currying pentru inferență tipului parametrilor.
+* Folosire call-by-name (în loc de call-by-value) pentru a crea control abstractions.
+* O expresie return dintr-o funcție anonimă întoarce va face funcția cu nume care o conține să întoarcă.
 * Stream-urile sunt leneșe și calculează valoarea doar când este apelat tail.
 ** Se poate folosi take cu force pe un stream pentru a forța un număr de valori.
 * Când mai multe prelucrări funcționale sunt necesare pe o colecție înaintea primei funcții de prelucrare se poate folosi view, iar sfârșit force.
