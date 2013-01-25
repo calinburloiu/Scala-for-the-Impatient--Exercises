@@ -63,3 +63,13 @@ obiectului ar trebui să includă parantezele.
 * Clauze case cu notație infix
 * Funcțiile parțiale nu sunt definite pe tot domeniul și pot verifica dacă o intrare e definită.
 ** collect din colecții privește o funcție parțială.
+
+* Într-o funcție recursivă, ultimul pas al computației trebuie să fie o apelul recursiv pentru a permite compilatorului să aplice "tail recursion", transformare în buclă.
+** Folsește @tailrec pentru a știi dacă e în stare compilatorul să aplice "tail recursion".
+* Vezi trampolining (pg. 207)!!!
+* Folosește @switch pentru expresii din match pentru a verifica dacă poate compilatorul să implementeze case-urile ca jump-uri.
+* Când se dorește crearea unei metode numerice pentru toate tipurile primitive se poate adnota parametrul de tip cu @specialized .
+** Adnotarea poate fi specializată, transmițând ca parametri ceea ce ne interesează.
+* Numele parametrilor contează -- pot fi chemați după nume.
+** Dacă se schimbă numele unui parametru, pentru a păstra compatibilitatea se folosește @deprecatedName('numeVechi) .
+* Simbolurile (tipul Symbol) sunt un soi de șiruri de caractere garantate a fi unice dacă au același "nume". Operatorul == verifică referințe -- e eficient.
