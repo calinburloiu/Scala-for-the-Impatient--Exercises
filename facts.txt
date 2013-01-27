@@ -73,3 +73,11 @@ obiectului ar trebui să includă parantezele.
 * Numele parametrilor contează -- pot fi chemați după nume.
 ** Dacă se schimbă numele unui parametru, pentru a păstra compatibilitatea se folosește @deprecatedName('numeVechi) .
 * Simbolurile (tipul Symbol) sunt un soi de șiruri de caractere garantate a fi unice dacă au același "nume". Operatorul == verifică referințe -- e eficient.
+* Acolade pentru cod în XML.
+* Acolade pentru code patterns când avem case-uri cu XML.
+** case <z>{_}</z> // z cu un nod în el
+** case <z>{_*}</z> // z cu secvență de noduri în el
+** case <z>{child}</z> // child va fi un nod din z
+** case <z>{children @ _*}</z> // children vor fi o secvență de noduri din z
+* Operatorul % pentru adăugare / modificare atribut în Elem XML (elementul este imuabil, deci se crează unul nou)
+* Transformări XML cu RuleTransformer care primește obiecte RewriteRule.
