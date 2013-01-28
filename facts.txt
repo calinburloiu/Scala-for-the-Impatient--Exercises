@@ -85,3 +85,5 @@ obiectului ar trebui să includă parantezele.
 ** case <z>{children @ _*}</z> // children vor fi o secvență de noduri din z
 * Operatorul % pentru adăugare / modificare atribut în Elem XML (elementul este imuabil, deci se crează unul nou)
 * Transformări XML cu RuleTransformer care primește obiecte RewriteRule.
+* Într-o colecție flatMap poate să filtreze obiecte Option, intorcând o colecție care conține doar acele elemente care au putut fi obținute prin get pe opțiune.
+* O funcție anomică care acceptă mai mulți parametri poate fi transformată într-o funcție care acceptă un tuplu corespunzător parametrilor dacă se apelează tupled.
