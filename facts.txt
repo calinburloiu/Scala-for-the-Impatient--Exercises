@@ -62,8 +62,12 @@ obiectului ar trebui să includă parantezele.
 * La un case sau într-un for comprehension se poate folosi un guard if.
 * Clauze case cu notație infix
 * Funcțiile parțiale nu sunt definite pe tot domeniul și pot verifica dacă o intrare e definită.
-** collect din colecții privește o funcție parțială.
-
+** collect din colecții primește o funcție parțială.
+* Adnotarea constructorului primar se face înainte de parateza acestuia, iar adnotarea trebuie să aibă paranteze, chiar dacă nu are argumente.
+** A nu se confunda cu adnotarea clasei.
+* Expresiile pot fi adnotate: expr: @adnotare
+* Parametri de tip și tipurile pot fi adnotate.
+* Adnotările pot avea parametru de tip.
 * Într-o funcție recursivă, ultimul pas al computației trebuie să fie o apelul recursiv pentru a permite compilatorului să aplice "tail recursion", transformare în buclă.
 ** Folsește @tailrec pentru a știi dacă e în stare compilatorul să aplice "tail recursion".
 * Vezi trampolining (pg. 207)!!!
