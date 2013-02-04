@@ -87,3 +87,23 @@ obiectului ar trebui să includă parantezele.
 * Transformări XML cu RuleTransformer care primește obiecte RewriteRule.
 * Într-o colecție flatMap poate să filtreze obiecte Option, intorcând o colecție care conține doar acele elemente care au putut fi obținute prin get pe opțiune.
 * O funcție anomică care acceptă mai mulți parametri poate fi transformată într-o funcție care acceptă un tuplu corespunzător parametrilor dacă se apelează tupled.
+* Tipurile singleton <obj>.type pot avea ca instanțe obiectul respectiv sau null.
+* Method chaining se poate realiza folosing this.type. În felul ăsta se pot face moșteniri.
+* Clasele interne pot fi asemătoare celor statice din Java cu type projection.
+* Alias de tip cu type. Poate fi abstract în clase abstracte ;-)
+* Tipurile compure au forma T1 with T2 with ... with Tn { declarații }
+* Aliasurile de tip pot fi generice, de ex.: type x[A, B] = (A, B)
+* Tipurile parametrizate se pot înfrăți cu operatorii atunci când sunt în notație infix; de ex.: String Map Int same-same with Map[String, Int]
+* Tipurile existanțiale (forSome) oferă flexibilitate în definirea tipurilor.
+** Pot conține type și val.
+** Sunt folosite pentru interoperabilitatea cu wildcard-urile Java.
+** Wildcard-urile Scala sunt zăhărel sintactic pentru tipuri existențiale.
+* Metodele și funcțiile au tipuri diferite: (x: Int)Int not same-same Int => Int
+* Self type-urile nu se moștenesc automat.
+* Cake pattern și dependency injection
+* Tipuri parametrizate vs. Tipuri abstracte
+* Higher-kinded types
+* Se poate ca un parametru implicit să fie în același timp și conversie implicită.
+** Se folosește des pentru conversie și parametru implicit T => Ordered[T].
+* Funcția implicitly[T] din Predef întoarce o funcție implicită pentru un tipul parametru T.
+* View bounds au nevoie de implicit conversion, context bound de implicit values.
