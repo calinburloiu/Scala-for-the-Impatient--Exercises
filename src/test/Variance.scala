@@ -13,10 +13,10 @@ class Cotoroaba extends Pisica {
 }
 
 class Func extends Function1[Container[Pisica], Container[Pisica]] {
-  def apply(input: Container[Pisica]) = { input.fa(); input }
+  def apply(input: Container[Pisica]) = { input }
 }
 
-class Container[+E](e: E) {
+class Container[-E](e: E) {
 //  def fa() { e.mangaie() }
 }
 
@@ -32,7 +32,7 @@ object Variance extends App {
   foloseste(f, new Pisica)
   
   def makeFriends(p: Container[Pisica]) {}
-  makeFriends(new Container(new Cotoroaba))
+  makeFriends(new Container(new Felina))
   
 //  val g = new Func
 //  g(new Container(new Cotoroaba))
