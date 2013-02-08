@@ -1,1 +1,2 @@
 o In '/home/calinburloiu/workspace/scala-test/src/exercises/c14_match_case/package.scala', optimize leafSum for tail recursion.
+o Mai multe despre type projection: (12): Float
