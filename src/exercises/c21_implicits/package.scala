@@ -10,4 +10,9 @@ package object c21_implicits {
       if (a < b) a else b
   
   def Obtain(what: TypeToObtain) = new ReadDsl(what)
+  
+//  implicit def point2RichPointLex(point: java.awt.Point) =
+//      new RichPointLex(point.x, point.y)
+  implicit def point2Double(point: java.awt.Point): Double = math.sqrt(
+      point.x * point.x + point.y * point.y)
 }

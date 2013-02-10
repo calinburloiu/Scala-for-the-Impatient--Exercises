@@ -26,4 +26,6 @@ object Implicits extends App {
   new PairA[D](new D(2), new D(3)).smaller
 //  new PairB[Int](2,3).smaller
   new PairC[C](new C(2), new C(3)).smaller
+  
+  def testEquality[A, B](a: A, b: B)(implicit ev: A =:= B): Boolean = a == b
 }
