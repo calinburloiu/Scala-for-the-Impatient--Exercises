@@ -78,13 +78,16 @@ obiectului ar trebui să includă parantezele.
 ** Dacă se schimbă numele unui parametru, pentru a păstra compatibilitatea se folosește @deprecatedName('numeVechi) .
 * Simbolurile (tipul Symbol) sunt un soi de șiruri de caractere garantate a fi unice dacă au același "nume". Operatorul == verifică referințe -- e eficient.
 * Acolade pentru cod în XML.
+* În XML, acoladele se scapă dublându-le.
 * Acolade pentru code patterns când avem case-uri cu XML.
 ** case <z>{_}</z> // z cu un nod în el
 ** case <z>{_*}</z> // z cu secvență de noduri în el
 ** case <z>{child}</z> // child va fi un nod din z
 ** case <z>{children @ _*}</z> // children vor fi o secvență de noduri din z
+* Operatorii \ și \\ pot fi folosiți pentru căutări XPath-gen.
 * Operatorul % pentru adăugare / modificare atribut în Elem XML (elementul este imuabil, deci se crează unul nou)
 * Transformări XML cu RuleTransformer care primește obiecte RewriteRule.
+** Am scris niște implicit-uri pentru a putea apela o metodă transform direct pe un Node cu o funcție care realizează transformarea. Există o conversie implicită de la funcție la SAM.
 * Într-o colecție flatMap poate să filtreze obiecte Option, intorcând o colecție care conține doar acele elemente care au putut fi obținute prin get pe opțiune.
 * O funcție anomică care acceptă mai mulți parametri poate fi transformată într-o funcție care acceptă un tuplu corespunzător parametrilor dacă se apelează tupled.
 * Tipurile singleton <obj>.type pot avea ca instanțe obiectul respectiv sau null.
@@ -118,3 +121,5 @@ obiectului ar trebui să includă parantezele.
 ** Funcția find(s: Student): Person poate fi înlocuită cu f(p: Person): Student, deoarece f poate accepta la intrare orice persoană, inclusiv studenți, iar find de asemenea poate întoarce orice fel de persoane inclusiv studenți.
 * Tipurile imuabile sunt covariante în T, dar de multe ori dorim să facem facem actualizări imuabile (prin clonare și modificare). Pentru asta, metodele trebuie să folosească alt tip R >: T.
 * Either poate fi folosit pentru a reprezenta o valoare cu două valori posibile, Left <: Either și Right <: Either.
+* Ascriptions: List(a: _*), "Călin": AnyRef, Nil: List[String]
+** Up-cast realizat la compile-time.
