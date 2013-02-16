@@ -1,0 +1,5 @@
+<!ELEMENT wikiarticle (art)>
+<!ELEMENT art (redirect, redirect?, article?)>
+<!ATTLIST art type CDATA #REQUIRED>
+<!ELEMENT redirect (#PCDATA)>
+<!ELEMENT article (#PCDATA)>

@@ -62,7 +62,7 @@ package object c16_xml {
   // Exer07
   def makeHtmlDl(map: Map[String, String]): Elem = {
     val items = for (i <- map)
-      yield <xml:group><dt>{i._1}</dt><dd>{i._2}</dd></xml:group>;
+      yield { <xml:group><dt>{i._1}</dt><dd>{i._2}</dd></xml:group> }
     <dl>{items}</dl>
   }
   
@@ -75,6 +75,10 @@ package object c16_xml {
   
   // Exer09
   // Exer10
+  /* Use MyXmlLoader for preserving the DOCTYPE.
+   * It does not use a local resolver for the DTD, so loading XHTML file can
+   * take some time and it may even fail on network timeout.
+   */
   def addAlts2Html(filename: String) {
     import RichNode.node2RichNode
     
@@ -91,6 +95,5 @@ package object c16_xml {
     val transformed = root.transform(rule)(0)
     XML.save("out.xhtml", transformed, enc = "UTF-8",
         xmlDecl = true)
-    
   }
 }

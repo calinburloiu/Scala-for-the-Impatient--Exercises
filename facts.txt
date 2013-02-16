@@ -123,3 +123,4 @@ obiectului ar trebui să includă parantezele.
 * Either poate fi folosit pentru a reprezenta o valoare cu două valori posibile, Left <: Either și Right <: Either.
 * Ascriptions: List(a: _*), "Călin": AnyRef, Nil: List[String]
 ** Up-cast realizat la compile-time.
+* Metodele de aritate 0 apelate ca sufix trebuie să fie ultima entitate de pe linie, iar următoarea linie trebuie să fie goală.
