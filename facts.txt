@@ -124,3 +124,26 @@ obiectului ar trebui să includă parantezele.
 * Ascriptions: List(a: _*), "Călin": AnyRef, Nil: List[String]
 ** Up-cast realizat la compile-time.
 * Metodele de aritate 0 apelate ca sufix trebuie să fie ultima entitate de pe linie, iar următoarea linie trebuie să fie goală.
+* Actorii sunt semănători thread-urilor sau interfețelor Runnable -- în loc de run avem act.
+* Methoda act a unui actor conține de regulă o buclă infinită care face receive folosind o funcție parțială (case-uri).
+* Mesajele către actori sunt trimise asincron -- "send and forget".
+* Se recomandă folosirea de case class-uri pentru mesaje.
+* Actorii nu trebuie să folosească date partajate.
+* E bine ca actorii să trimite rezultatele către alți actori.
+** Se poate trimite o referință către un alt actor sau către expeditor sau se poate trimite rezultatul către un set de actori cunoscuți (global sau actorului respectiv).
+* Se preferă trimiterea de mesaje între actori prin canale (Channel), deoarece acestea sunt type safe.
+** Se elimină nevoia de a ține referințe către actori; se vor ține referințe către OutputChannel-s.
+* Channel moștenește trait-urile InputChannel și OutputChannel.
+* Când un actor primește mesaje prin canale cu metoda sa receive se folosește case class-ul ! la modul: { case channelX ! msgA => ... }.
+* Se poate face schimb de mesaje asincron între actori cu !? .
+* În locul schimbului de mesaje asincron se preferă obținerea unui "future" cu !! .
+** Metoda isSet de pe future  precizează dacă a fost întors un rezultat iar apply-ul întoarce blocant rezultatul.
+* Pentru ca un actor să nu blocheze firul de execuție se folosește metoda react care asociază cu mailbox-ul actorului o funcție parțială și iese întotdeauna anormal (printr-o excepție).
+** Execuția trebuie să continue după executarea funcției partiale: fie aceasta apelează din nou react, fie se folosește o metodă loop.
+** Prin urmare nici funcția parțială nu poate întoarce rezultat.
+* Actorii care folosesc react pot partaja thread-uri.
+* Un actor moare atunci când metoda act se termină (normal sau prin excepție) sau când se apelează metoda exit.
+* Actorii pot fi legați între ei cu metoda link, a.î. un actor să știe dacă actor legat de el a murit.
+* Când un actor moare, starea sa internă și mailbox-ul rămân.
+** El poate fi reînviat cu metoda restart, dar trebuie să refăcute legăturile și eventual reparată starea internă, care este posibil să fie invalidă.
+* Se recomandă gruparea actorilor pe zone, fiecare zonă având un actor supervizor care se ocupă de actorii eșuați.
