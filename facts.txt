@@ -147,3 +147,17 @@ obiectului ar trebui să includă parantezele.
 * Când un actor moare, starea sa internă și mailbox-ul rămân.
 ** El poate fi reînviat cu metoda restart, dar trebuie să refăcute legăturile și eventual reparată starea internă, care este posibil să fie invalidă.
 * Se recomandă gruparea actorilor pe zone, fiecare zonă având un actor supervizor care se ocupă de actorii eșuați.
+* Continuări:
+** O continuare se definește într-un bloc reset împreună cu un bloc imbricat shift.
+** Ea reprezintă o funcție a cărei execuție începe din punctul expresiei shift (inclusiv) și până la sfârșitul blocului reset.
+** La execuția funcției, prima expresie executată este cea care conține blocul shift, dar acest bloc va fi înlocuit cu valoarea de intrare a funcție.
+*** Shift este o gaură (hole) când este definit, iar la executarea continuării gaura se umple cu valoarea de intrare.
+** La definirea continuării în blocul shift trebuie salvată referința către funcția continuarii într-o variabilă, pentru a putea apela funcția ulterior.
+** Funcția continuării întoarce o valoare, aceasta fiind valoarea ultimei expresii din continuare (adică înainte de terminarea blocului reset), ca la orice bloc Scala.
+*** Pentru calculul valorii de ieșire poate fi folosită bineînțeles expresia cu gaură.
+** Când se execută prima oară blocul reset, se rulează tot ce este până la reset, apoi se intră în shift și se rulează ce este acolo (așadar se salvează și referința către continuare), iar la sfârșitul blocului shift se sare în afara blocului reset. Se poate continua execuția după shift apelând funcția continuare.
+** Blocul reset întoarce rezultatul din interiorul shift când se execută reset prima oară sau ultima expresie din reset când se execută continuarea.
+*** Este logic, în ambele cazuri rezultatul reprezintă ultima expresie executată din blocul reset.
+** shift și reset au parametri de tip:
+*** reset are doi: cele două tipuri pe care le poate întoarce.
+*** shift are trei: tipurile funcției continuare transmise lui shift și tipul întors de shift; corpul lui shift e o funcție (A => B) => C.
