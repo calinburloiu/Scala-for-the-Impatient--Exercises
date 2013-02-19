@@ -1,4 +1,4 @@
-
+package test
 import scala.reflect.BeanProperty
 
 class Person(name: String = "John Doe", private var _age: Int = 0) {
@@ -43,7 +43,7 @@ object PG extends App {
     case o: Employee => println("angajatul " + o)
     case o: Cat => println("cotoroaba " + o)
     case o: Person => println("persoana " + o)
-    case null => println("nimic coaie")
+    case null => println("nimic")
     case _ => println("altceva")
   }
 }

@@ -1,3 +1,4 @@
+// Exer06
 package exercises.c07_packages
 
 import java.util.{ HashMap => JavaHashMap }

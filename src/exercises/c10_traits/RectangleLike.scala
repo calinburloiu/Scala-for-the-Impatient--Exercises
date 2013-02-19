@@ -1,3 +1,4 @@
+// Exer01
 package exercises.c10_traits
 import java.awt.geom.RectangularShape
 

@@ -1,3 +1,5 @@
+// Exer06
+// Exer07
 package exercises.c08_inheritance
 
 abstract class Shape {

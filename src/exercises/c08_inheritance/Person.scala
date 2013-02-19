@@ -1,3 +1,4 @@
+// Exer08
 package exercises.c08_inheritance
 
 class Person(val name: String) {

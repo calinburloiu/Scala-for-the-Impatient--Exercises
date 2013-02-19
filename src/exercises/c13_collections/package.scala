@@ -4,6 +4,7 @@ import collection.mutable
 import scala.annotation.tailrec
 
 package object c13_collections {
+  
   def fibo(n: Int) = n match {
     case 0 => Vector(0)
     case 1 => Vector(0, 1)
@@ -16,6 +17,7 @@ package object c13_collections {
     f(0, 1)
   }
   
+  // Exer02
   def charIndex(str: String, index: Int): SortedMap[Char, SortedSet[Int]] = {
     if (str.isEmpty) {
       SortedMap()
@@ -27,6 +29,7 @@ package object c13_collections {
     }
   }
   
+  // Exer01
   def charIndexMutable(str: String) = {
     val map = new mutable.LinkedHashMap[Char, mutable.LinkedHashSet[Int]]
     var elem: mutable.LinkedHashSet[Int] = null
@@ -41,7 +44,8 @@ package object c13_collections {
     
     map
   }
-  
+
+  // Exer03
   def rmZeros(list: mutable.LinkedList[Int]) = {
     var retList: mutable.LinkedList[Int] = null
     if (list.elem == 0)
@@ -60,16 +64,21 @@ package object c13_collections {
     retList
   }
   
+  // Exer04
   def exer4(a: Seq[String], m: Map[String, Int]) = a.flatMap(m.get(_))
   
+  // Exer05
   def myMkString(coll: Iterable[Any], sep: String) = coll.reduceLeft(_ + sep + _)
   
+  // Exer06
   def reverse(lst: List[Int]) = (lst :\ List[Int]())((x, y) => y ++ List(x))
   def reverse2(lst: List[Int]) = (List[Int]() /: lst)((x, y) => y +: x)
   
+  // Exer07
   def calcPrices(prices: Seq[Float], quantities: Seq[Int]) =
     (prices zip quantities) map { ((p: Float, q: Int) => p * q).tupled }
   
+  // Exer08
   def matrixize(a: Array[Int], n: Int): Array[Array[Int]] = {
     val il = a.length / n
     val out = new Array[Array[Int]](il)

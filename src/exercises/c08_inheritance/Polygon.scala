@@ -1,3 +1,5 @@
+// Exer03
+// Adapted from http://www.cplusplus.com/
 package exercises.c08_inheritance
 
 class Polygon(var width: Double, var height: Double)

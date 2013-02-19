@@ -1,3 +1,5 @@
+// Exer06
+// Exer07
 package exercises.c06_objects
 
 object PlayingCardSuits extends Enumeration {

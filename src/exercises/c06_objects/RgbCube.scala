@@ -1,3 +1,4 @@
+// Exer08
 package exercises.c06_objects
 
 object RgbCube extends Enumeration {

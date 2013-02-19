@@ -21,7 +21,7 @@ object TwiceTest extends Application {
     map
   }
 
-//  println(wordCount("/home/calinburloiu/tmp/scala/facts.txt")
+//  println(wordCount("facts.txt")
 //      .map((t: (String, Int)) => t._2 + "\t" + t._1)
 //      .mkString("\n"))
 

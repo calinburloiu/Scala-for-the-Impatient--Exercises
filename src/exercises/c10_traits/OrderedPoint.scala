@@ -1,3 +1,4 @@
+// Exer02
 package exercises.c10_traits
 import _root_.java.awt.Point
 import scala.collection.immutable.TreeSet

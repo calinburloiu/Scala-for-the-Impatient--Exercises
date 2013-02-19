@@ -1,3 +1,4 @@
+// Exer06
 package exercises.c11_operators
 
 object ASCIIArt {

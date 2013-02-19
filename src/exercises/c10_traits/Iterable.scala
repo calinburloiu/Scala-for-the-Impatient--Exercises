@@ -1,3 +1,4 @@
+// Exer10
 package exercises.c10_traits
 import java.io.InputStream
 import java.io.FileInputStream

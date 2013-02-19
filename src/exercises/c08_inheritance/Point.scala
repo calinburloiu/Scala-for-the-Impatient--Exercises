@@ -1,3 +1,4 @@
+// Exer05
 package exercises.c08_inheritance
 
 class Point(val x: Double, val y: Double)
