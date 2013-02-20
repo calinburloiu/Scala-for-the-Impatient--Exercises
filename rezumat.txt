@@ -173,3 +173,7 @@ fi întârziată cu lazy).
 ** shift și reset au parametri de tip:
 *** reset are doi: cele două tipuri pe care le poate întoarce.
 *** shift are trei: tipurile funcției continuare transmise lui shift și tipul întors de shift; corpul lui shift e o funcție (A => B) => C.
+* Folosind sealed se permite compilatorului să verifice în mod exhaustiv dacă fiecare case class care extinde clasa/trait-ul sealed este acoperit de case-uri.
+** Atenție! Cazul pentru valori nule nu este acoperit și poate apărea un match error. Pentru a putea beneficia de avantajul sealed și pentru a acoperi și cazul null, trebuie folosit `case null` și nu `case _`.
+* O funcție parțială poate fi completată cu o alta pe domeniul pe care nu este definită.
+* Destructuring bindings (extractor): bune pentru tupluri, case class-uri, sau clase cu unapply.
