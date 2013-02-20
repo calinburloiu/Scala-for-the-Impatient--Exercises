@@ -1,6 +1,2 @@
-o In '/home/calinburloiu/workspace/scala-test/src/exercises/c14_match_case/package.scala', optimize leafSum for tail recursion.
-o trampolining și @tailrec
-o Mai multe despre type projection: (12): Float
-x De realizat un aplicație demonstrativă cu CanBuildFrom.
-o Încă o citire despre higher-kinded types.
+o Vezi trampolining (pg. 207) și @tailrec.
 o Vezi metodele Iterable și Seq.

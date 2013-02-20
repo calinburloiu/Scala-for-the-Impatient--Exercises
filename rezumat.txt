@@ -1,57 +1,62 @@
 * Blocurile întorc valoarea ultimei expresii.
-* Funcțiile diferite de metode (ca în C++).
+* Funcțiile diferite de metode.
 * return reprezintă o ieșire forțată dintr-o funcție **cu nume**.
 ** Nu trebuie folosit în alte situații.
 * Parametrii combinați, fără nume și cu nume, cei fără fiind primii.
 ** Unii parametri pot avea valori default (ca în C++).
 * Procedurile nu au egal, ci doar acolade.
+** Concențional, căci acesta este un zahărel sintactic, ele putând fi definite `def f: Unit = { .. }`.
 * lazy val
 * def este evaluat la fiecare folosire, val doar la definire (definirea poate
 fi întârziată cu lazy).
 * Expresiile if întorc tipul cel mai general dintre cele două ramuri.
-** Dacă una din ramuri întoarce Nothing este ignorată.
+** Dacă una din ramuri întoarce Nothing (excepție) este ignorată.
 * Expresiile throw întorc Nothing.
-* Metodele fără parametri pot fi apelate fără (), dar cele care schimbă starea
-obiectului ar trebui să includă parantezele.
+* Metodele fără parametri, dar definite cu (), pot fi apelate fără (), dar cele care schimbă starea obiectului ar trebui să includă parantezele.
+* Există metode fără parametri, fără (). Ele nu pot fi apelate cu (), deci pentru exterior par niște val-uri sau var-uri.
 * Implementarea de proprietăți în clase:
 ** var foo: getter și setter
 ** val foo: getter și valoare constantă
-** private var privateFoo: getter (def foo) și setter (def foo_=(..)) creat manual
-** private var privateFoo: getter (def foo) creat manual pentru proprietate read-only variabilă
-* type projection <Class>#<InnerClass>
+** private var privateFoo: getter (def foo) și setter (def foo_=(..)) create manual
+** private var privateFoo: getter (def foo) creat manual pentru proprietate read-only pentru exterior și variabilă în interior.
+* type projection <Class>#<InnerClass>:
+** <InnerClass> este clasa tuturor instanțelor <Class>.
 * Pentru colecția coll, coll: _* se expandează în mai mulți parametri pentru apelul unei funcții cu număr de parametri variabili.
+** Pentru compatibilitate cu Java se folosește adnotarea @varargs la metodă.
 * <EnclosingClass>.this (ca în Java)
-* Redenumirea claselor la import
-* Apelarea super constructorului direct din declarația clasei.
+* Redenumirea entităților la import: `import a.b.{c => x}`
+* Apelarea super constructorului direct din declarația clasei
 * Un def dintr-o clasă de bază poate fi override-at de un val în clasa moștenitoare.
 * Anonymous subclasses
 * Early definition (with)
 * Ierarhia de clase: Any, AnyVal, AnyRef, Nothing, Null, ScalaObject
+** Unit nu este superclasa tuturor claselor, dar poate fi înlocuit de compilator cu orice.
 ** Nothing nu are instanțe.
-* eq este pentru obiecte în Scala ce este == în Java.
+* eq este pentru obiecte în Scala ce este == în Java: verifică referințe.
 * trait-urile se înlănțuie (midex in) cu with, iar metodele suprascrise sunt apelate de la ultima din lanț la prima.
 ** super nu apelează un părinte, decât dacă se folosește notația super[părinte]
-** super apelează trait-ul anterior lui din mixed in.
+** super apelează trait-ul anterior lui din mixin.
 * Trait-urile pot conține metode abstracte, care pot fi override-ate cu abstract override.
-* Initializing trait fields: early initialization după new la crearea unui obiectului.
+* Initializing trait fields: early initialization după new la crearea obiectului.
 * Se poate mixa un trait care extinde o clasă, caz în care clasa respectivă devine superclasa clasei care extinde trait-ul.
-** Clasa care extinde trait-ul are posibilitatea să extindă și o altă clasă cu condiția ca aceasta să fie o subclasă a superclasei extinse de trait.
+** Clasa care extinde trait-ul are posibilitatea să extindă și o altă clasă cu condiția ca aceasta să fie o clasă inferioară a superclasei extinse de trait.
 * Self types pentru trait-uri:
-** Impun claselor care extind traitul să extindă o subclasă a self type-ului.
+** Impun claselor care extind traitul să extindă o clasă inferioară a self type-ului.
 ** Trait-ul cu self type nu extinde efectiv clasa self type.
 * Self types în structural types
 * Escape hatch: `reserved_keyword`
 * An extended class argument will not be bound to a superclass field which has the same name.
 * Operatorii unari au prioritate mai mare decât cei infix.
 * Operatorii care se termină în : reprezintă metode ale celui de-al doilea argument și au asociativitate de dreapta.
-* Un apply boolean poate testa o condiție într-un case class.
+* Un apply boolean poate testa o condiție într-un case.
 * implicit pentru converisia SAM (Single Abstract Methods) în funcții.
-* Currying pentru inferență tipului parametrilor.
+* Currying pentru inferența tipului parametrilor.
 * Folosire call-by-name (în loc de call-by-value) pentru a crea control abstractions.
-* O expresie return dintr-o funcție anonimă întoarce va face funcția cu nume care o conține să întoarcă.
+* O expresie return dintr-o funcție anonimă va face funcția cu nume care o conține să întoarcă.
 * Stream-urile sunt leneșe și calculează valoarea doar când este apelat tail.
 ** Se poate folosi take cu force pe un stream pentru a forța un număr de valori.
 * Când mai multe prelucrări funcționale sunt necesare pe o colecție înaintea primei funcții de prelucrare se poate folosi view, iar sfârșit force.
+** Evaluare leneșă: abia la apelul force se vor face prelucrările de după apelul view.
 * În pattern matching dacă identificatorul de după case este scris cu litere mici atunci este interpretat ca variabilă nouă și face match la orice.
 ** Pentru a evita asta se înconjoară identificatorul cu backtick-uri `.
 * În pattern matching când se face match pentru un tip trebuie precizat numele variabilei sau _, altfel se va face match pe obiect.
@@ -61,6 +66,7 @@ obiectului ar trebui să includă parantezele.
 * Într-un for comprehension un match eșuat este ignorat.
 * La un case sau într-un for comprehension se poate folosi un guard if.
 * Clauze case cu notație infix
+** De exemplu case class-ul :: pentru liste sau ! la actori pentru primirea de mesaje de pe un canal.
 * Funcțiile parțiale nu sunt definite pe tot domeniul și pot verifica dacă o intrare e definită.
 ** collect din colecții primește o funcție parțială.
 * Adnotarea constructorului primar se face înainte de parateza acestuia, iar adnotarea trebuie să aibă paranteze, chiar dacă nu are argumente.
@@ -68,7 +74,7 @@ obiectului ar trebui să includă parantezele.
 * Expresiile pot fi adnotate: expr: @adnotare
 * Parametri de tip și tipurile pot fi adnotate.
 * Adnotările pot avea parametru de tip.
-* Într-o funcție recursivă, ultimul pas al computației trebuie să fie o apelul recursiv pentru a permite compilatorului să aplice "tail recursion", transformare în buclă.
+* Într-o funcție recursivă, ultimul pas al computației trebuie să fie apelul recursiv pentru a permite compilatorului să aplice "tail recursion", transformare în buclă.
 ** Folsește @tailrec pentru a știi dacă e în stare compilatorul să aplice "tail recursion".
 * Vezi trampolining (pg. 207)!!!
 * Folosește @switch pentru expresii din match pentru a verifica dacă poate compilatorul să implementeze case-urile ca jump-uri.
@@ -88,14 +94,14 @@ obiectului ar trebui să includă parantezele.
 * Operatorul % pentru adăugare / modificare atribut în Elem XML (elementul este imuabil, deci se crează unul nou)
 * Transformări XML cu RuleTransformer care primește obiecte RewriteRule.
 ** Am scris niște implicit-uri pentru a putea apela o metodă transform direct pe un Node cu o funcție care realizează transformarea. Există o conversie implicită de la funcție la SAM.
-* Într-o colecție flatMap poate să filtreze obiecte Option, intorcând o colecție care conține doar acele elemente care au putut fi obținute prin get pe opțiune.
-* O funcție anomică care acceptă mai mulți parametri poate fi transformată într-o funcție care acceptă un tuplu corespunzător parametrilor dacă se apelează tupled.
+* Într-o colecție, flatMap poate să filtreze obiecte Option, intorcând o colecție care conține doar acele elemente care au putut fi obținute prin get pe opțiune.
+* O funcție anonimă care acceptă mai mulți parametri poate fi transformată într-o funcție care acceptă un tuplu corespunzător parametrilor dacă se apelează tupled.
 * Tipurile singleton <obj>.type pot avea ca instanțe obiectul respectiv sau null.
-* Method chaining se poate realiza folosing this.type. În felul ăsta se pot face moșteniri.
+* Method chaining se poate realiza folosing this.type. În felul ăsta se pot face moșteniri ale claselor care folosesc method chaining.
 * Clasele interne pot fi asemătoare celor statice din Java cu type projection.
 * Alias de tip cu type. Poate fi abstract în clase abstracte ;-)
-* Tipurile compure au forma T1 with T2 with ... with Tn { declarații }
-* Aliasurile de tip pot fi generice, de ex.: type x[A, B] = (A, B)
+* Tipurile compuse au forma T1 with T2 with ... with Tn { declarații }
+* Aliasurile de tip pot fi generice, de ex.: Avem `type x[A, B] = (A, B)` și atunci putem să declarăm `val myPair: Int x Double` :-D
 * Tipurile parametrizate se pot înfrăți cu operatorii atunci când sunt în notație infix; de ex.: String Map Int same-same with Map[String, Int]
 * Tipurile existanțiale (forSome) oferă flexibilitate în definirea tipurilor.
 ** Pot conține type și val.
@@ -106,19 +112,25 @@ obiectului ar trebui să includă parantezele.
 * Cake pattern și dependency injection
 * Tipuri parametrizate vs. Tipuri abstracte
 * Higher-kinded types
-* Se poate ca un parametru implicit să fie în același timp și conversie implicită.
-** Se folosește des pentru conversie și parametru implicit T => Ordered[T].
-* Funcția implicitly[T] din Predef întoarce o funcție implicită pentru un tipul parametru T.
+* Se poate ca un parametru implicit să fie în același timp și conversie implicită: dacă e de tip funcție Function1.
+** Se folosește des pentru conversie și parametru implicit, de exemplu `T => Ordered[T]`.
+* Funcția implicitly[T] din Predef întoarce o valoare implicită pentru un tipul parametru T.
 * View bounds au nevoie de implicit conversion, context bound de implicit values.
-* Parametrii implicit evidence, nu numai că constrâng timpurile, dar ele în sine reprezintă o conversie implicită.
+* Un context bound  C[T : M] impune ca la instanțierea unui obiect C[X] să existe o valoare implicită M[X].
+** Metodele vor folosi această valoare implicită, obținând-o fie ca parametru implicit fie folosind implicitly.
+** Dacă înlocuim definiția clasei anterioare cu C[T] (fără context bound), dar folosim în continuare metodele membre descrise anterior, pentru un obiect de tip C[X] nu va aparea eroare în cazul în care nu există o valoare implicită M[X] la instanțiere ci la apelul uneia dintre metodele respective.
+*** Morala: trebuie folosit context bound atunci când se dorește verificarea existenței valorii implicite la instanțierea obiectului.
+** Un caz particular pentru context bound este Manifest[T], un obiect care ajută la crearea unui T[] în JVM.
+*** Dacă avem o metodă `def f[T : Manifest] = new Array[T](n)`, în JVM va există un sigur f pentru orice T, iar obiectul implicit Manifest pentru tipul T va crea array-ul T[].
+* Parametrii impliciți evidence, nu numai că vor constrânge timpurile, dar ei în sine reprezintă o conversie implicită.
 ** <%< e deprecated, folosește =>
 * Parametrii evidence pot fi folosiți atunci când anumite metode ale unei clase trebuie să respecte niște constângeri pe care restul clasei nu trebuie neapărat să le satisfacă.
-* Parametrii evidenci sunt utili și atunci când type inferencer-ul trebuie ajutat să infere tipul și trebuie să o facă din doi pași.
+* Parametrii evidence sunt utili și atunci când type inferencer-ul trebuie ajutat să infere tipul și trebuie să o facă din doi pași.
 * Colecțiile folosesc CanBuildFrom pentru a crea noi colecții cu operații funcționale (de exemplu map).
-* Varianță indică sensul în care variază parametrul de tip.
-** Restricția ieșire-covariantă / intrare-invariantă se aplică pentru parametrii tip din cadrul tipului parametrizat și nu pentru funcții exterioare care folosesc tipul parametrizat.
-* Tipul parametrizat C[B]: C[-T] poate fi înlocuit cu C[A], B <: A, deoarece metodele cu parametrul generic T, când acesta este A poate accepta și B, fiind fiul său.
-** Funcția find(s: Student): Person poate fi înlocuită cu f(p: Person): Student, deoarece f poate accepta la intrare orice persoană, inclusiv studenți, iar find de asemenea poate întoarce orice fel de persoane inclusiv studenți.
+* Varianța indică sensul în care poate varia parametrul de tip în raport ce sensul moștenirii tipului parametrizat.
+** Restricția ieșire-covariantă / intrare-invariantă se aplică pentru parametrii de tip din cadrul tipului parametrizat și nu pentru funcții exterioare care folosesc tipul parametrizat.
+* Tipul parametrizat C[B]: C[-T] poate fi înlocuit cu C[A], B <: A.
+** Funcția `find(s: Student): Person` poate fi înlocuită cu `f(p: Person): Student`, deoarece f poate accepta la intrare orice persoană, inclusiv studenți, iar find de asemenea poate întoarce orice fel de persoane inclusiv studenți.
 * Tipurile imuabile sunt covariante în T, dar de multe ori dorim să facem facem actualizări imuabile (prin clonare și modificare). Pentru asta, metodele trebuie să folosească alt tip R >: T.
 * Either poate fi folosit pentru a reprezenta o valoare cu două valori posibile, Left <: Either și Right <: Either.
 * Ascriptions: List(a: _*), "Călin": AnyRef, Nil: List[String]
@@ -129,7 +141,7 @@ obiectului ar trebui să includă parantezele.
 * Mesajele către actori sunt trimise asincron -- "send and forget".
 * Se recomandă folosirea de case class-uri pentru mesaje.
 * Actorii nu trebuie să folosească date partajate.
-* E bine ca actorii să trimite rezultatele către alți actori.
+* E bine ca actorii să trimită rezultatele către alți actori.
 ** Se poate trimite o referință către un alt actor sau către expeditor sau se poate trimite rezultatul către un set de actori cunoscuți (global sau actorului respectiv).
 * Se preferă trimiterea de mesaje între actori prin canale (Channel), deoarece acestea sunt type safe.
 ** Se elimină nevoia de a ține referințe către actori; se vor ține referințe către OutputChannel-s.
@@ -143,19 +155,19 @@ obiectului ar trebui să includă parantezele.
 ** Prin urmare nici funcția parțială nu poate întoarce rezultat.
 * Actorii care folosesc react pot partaja thread-uri.
 * Un actor moare atunci când metoda act se termină (normal sau prin excepție) sau când se apelează metoda exit.
-* Actorii pot fi legați între ei cu metoda link, a.î. un actor să știe dacă actor legat de el a murit.
+* Actorii pot fi legați între ei cu metoda link, a.î. un actor să știe dacă un actor legat de el a murit.
 * Când un actor moare, starea sa internă și mailbox-ul rămân.
-** El poate fi reînviat cu metoda restart, dar trebuie să refăcute legăturile și eventual reparată starea internă, care este posibil să fie invalidă.
+** El poate fi reînviat cu metoda restart, dar trebuie refăcute legăturile și eventual reparată starea internă, care este posibil să fie invalidă.
 * Se recomandă gruparea actorilor pe zone, fiecare zonă având un actor supervizor care se ocupă de actorii eșuați.
 * Continuări:
 ** O continuare se definește într-un bloc reset împreună cu un bloc imbricat shift.
 ** Ea reprezintă o funcție a cărei execuție începe din punctul expresiei shift (inclusiv) și până la sfârșitul blocului reset.
-** La execuția funcției, prima expresie executată este cea care conține blocul shift, dar acest bloc va fi înlocuit cu valoarea de intrare a funcție.
+** La execuția funcției, prima expresie executată este cea care conține blocul shift, dar acest bloc va fi înlocuit cu valoarea de intrare a funcției.
 *** Shift este o gaură (hole) când este definit, iar la executarea continuării gaura se umple cu valoarea de intrare.
 ** La definirea continuării în blocul shift trebuie salvată referința către funcția continuarii într-o variabilă, pentru a putea apela funcția ulterior.
 ** Funcția continuării întoarce o valoare, aceasta fiind valoarea ultimei expresii din continuare (adică înainte de terminarea blocului reset), ca la orice bloc Scala.
 *** Pentru calculul valorii de ieșire poate fi folosită bineînțeles expresia cu gaură.
-** Când se execută prima oară blocul reset, se rulează tot ce este până la reset, apoi se intră în shift și se rulează ce este acolo (așadar se salvează și referința către continuare), iar la sfârșitul blocului shift se sare în afara blocului reset. Se poate continua execuția după shift apelând funcția continuare.
+** Când se execută prima oară blocul reset, se rulează tot ce este până la shift, apoi se intră în shift și se rulează ce este acolo (așadar se salvează și referința către continuare), iar la sfârșitul blocului shift se sare în afara blocului reset. Se poate continua execuția după shift apelând funcția continuare.
 ** Blocul reset întoarce rezultatul din interiorul shift când se execută reset prima oară sau ultima expresie din reset când se execută continuarea.
 *** Este logic, în ambele cazuri rezultatul reprezintă ultima expresie executată din blocul reset.
 ** shift și reset au parametri de tip:
