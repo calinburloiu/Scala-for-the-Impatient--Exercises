@@ -1,3 +1,6 @@
+Scala for the Impatient
+=======================
+
 * Blocurile întorc valoarea ultimei expresii.
 * Funcțiile diferite de metode.
 * return reprezintă o ieșire forțată dintr-o funcție **cu nume**.
@@ -177,3 +180,10 @@ fi întârziată cu lazy).
 ** Atenție! Cazul pentru valori nule nu este acoperit și poate apărea un match error. Pentru a putea beneficia de avantajul sealed și pentru a acoperi și cazul null, trebuie folosit `case null` și nu `case _`.
 * O funcție parțială poate fi completată cu o alta pe domeniul pe care nu este definită.
 * Destructuring bindings (extractor): bune pentru tupluri, case class-uri, sau clase cu unapply.
+
+Functional Programming in Scala (coursera)
+==========================================
+
+* Tipul funcțional are asociere de dreapta: Int => Int => Int echivalent cu Int => (Int => Int)
+* require pentru precondiții
+* assert pentru postcondiții
