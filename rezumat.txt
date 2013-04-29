@@ -187,3 +187,9 @@ Functional Programming in Scala (coursera)
 * Tipul funcțional are asociere de dreapta: Int => Int => Int echivalent cu Int => (Int => Int)
 * require pentru precondiții
 * assert pentru postcondiții
+* Contrucția unei structuri de date în recursivitate poate fi realizată în două moduri:
+** Odată cu avansarea în recursivitate (la dus) cu un acumulator
+*** Beneficiază de avantujul tail recursion
+*** dar în cazul listelor Nil-Cons se inversează ordinea elementelor.
+** La întoarcerea din recursivitate.
+* Map cu withDefaultValue, withDefault
